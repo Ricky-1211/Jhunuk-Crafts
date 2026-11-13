@@ -1,0 +1,229 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================
+   JHUNUK CRAFTS — SOFT PASTEL THEME
+========================================= */
+
+:root {
+  --color-primary: #51464A;
+  --color-secondary: #A77D8B;
+  --color-accent: #C58FA0;
+  --color-background: #FFF9F5;
+  --color-surface: #FFFFFF;
+  --color-sand: #F8E8EC;
+  --color-muted: #81747A;
+  --color-border: #EEDDE2;
+
+  --color-pink: #F8E8EC;
+  --color-mint: #DCEDE2;
+  --color-blue: #DFEAF7;
+  --color-cream: #FFF9F1;
+
+  --radius-card: 12px;
+  --shadow-soft: 0 5px 22px rgba(81, 70, 74, 0.06);
+  --shadow-hover: 0 12px 30px rgba(81, 70, 74, 0.12);
+
+  --transition-smooth: 250ms ease;
+}
+
+/* GLOBAL */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-primary);
+  font-family: var(--font-body), sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  font-family: var(--font-display), serif;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+p {
+  line-height: 1.8;
+}
+
+a {
+  transition: color var(--transition-smooth);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: var(--color-secondary);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sand);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* REUSABLE COMPONENTS */
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold;
+    border-radius: 6px;
+    transition:
+      background var(--transition-smooth),
+      color var(--transition-smooth),
+      transform var(--transition-smooth),
+      box-shadow var(--transition-smooth);
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background: var(--color-secondary);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    @apply btn;
+    border: 1px solid var(--color-secondary);
+    color: var(--color-primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-pink);
+    color: var(--color-primary);
+  }
+
+  .input {
+    @apply w-full bg-white px-4 py-3.5 text-sm;
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    border-radius: 6px;
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(197, 143, 160, 0.15);
+  }
+}
+
+/* PRODUCT CARDS */
+
+.product-card,
+.category-card,
+.testimonial-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform var(--transition-smooth),
+    box-shadow var(--transition-smooth);
+}
+
+.product-card:hover,
+.category-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* INTERACTIVE ELEMENTS */
+
+details summary {
+  cursor: pointer;
+  transition: color var(--transition-smooth);
+}
+
+details summary:hover,
+details[open] summary {
+  color: var(--color-accent);
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 640px) {
+  .section {
+    @apply py-12;
+  }
+
+  .btn {
+    @apply px-5 py-3;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
