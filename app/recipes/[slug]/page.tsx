@@ -6,13 +6,15 @@ import { getProduct, getRecipe, recipes } from "@/lib/data";
 import SpiceArt from "@/components/SpiceArt";
 
 export const generateStaticParams = () => recipes.map((r) => ({ slug: r.slug }));
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const r = getRecipe(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const r = getRecipe(slug);
   return { title: r?.title ?? "Recipe", description: r?.intro };
 }
 
-export default function RecipePage({ params }: { params: { slug: string } }) {
-  const r = getRecipe(params.slug);
+export default async function RecipePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const r = getRecipe(slug);
   if (!r) notFound();
   const used = r.relatedProducts.map(getProduct).filter((p) => !!p);
   return (
