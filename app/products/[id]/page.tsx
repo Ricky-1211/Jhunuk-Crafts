@@ -39,7 +39,7 @@ export default function ProductDetailsPage() {
     );
   }
 
-  function handleAddToCart() {
+  const handleAddToCart = () => {
     addToCart({
       id: product.id,
       name: product.name,
@@ -47,7 +47,7 @@ export default function ProductDetailsPage() {
     });
 
     setAdded(true);
-  }
+  };
 
   const whatsappMessage = encodeURIComponent(
     `Hello Sudharani! I'm interested in ${product.name}. Please share the price and customisation details.`
